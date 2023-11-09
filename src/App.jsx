@@ -5,10 +5,11 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 
 import './App.css'
-import { increment } from './store/slices/counter';
+
+import { decrement, increment, incrementBy } from './store/slices/counter';
 
 
-function App() {
+const App = () => {
   
   const { counter } = useSelector( state => state.counter );
   const dispatch = useDispatch();
@@ -25,8 +26,16 @@ function App() {
       </div>
       <h1>Vite + React</h1>
       <div className="card">
+        
+        <h2>counter is { counter }</h2>
         <button onClick={() => dispatch( increment() )}>
-          counter is { counter }
+          Increment
+        </button>
+        <button onClick={() => dispatch( incrementBy( 2 ) )}>
+          Increment by 2
+        </button>
+        <button onClick={() => dispatch( decrement() )}>
+          Decrement
         </button>
         
       </div>
